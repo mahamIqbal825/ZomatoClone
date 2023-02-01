@@ -1,0 +1,20 @@
+/**
+ * Define action types
+ */
+
+// Init action types
+export const INIT_APP = 'INIT_APP';
+export const SET_LAST_BACK_TIME = 'SET_LAST_BACK_TIME';
+
+// Details
+export const GO_TO_DETAILS = 'GO_TO_DETAILS';
+export const SHOW_LOCATION_MODAL = 'SHOW_LOCATION_MODAL';
+
+export const GET_CART_SUCCESS = 'GET_CART_SUCCESS'
+export const ADD_CART_SUCCESS = 'ADD_CART_SUCCESS'
+export const ADD_REMOVE_WISH_SUCCESS = 'ADD_REMOVE_WISH_SUCCESS'
+
+
+export const SET_USER_ACCESS_TOKEN = 'SET_USER_ACCESS_TOKEN'
+export const DELETE_USER_ACCESS_TOKEN = 'DELETE_USER_ACCESS_TOKEN'
+export const SET_USER_ADDRESS = 'SET_USER_ADDRESS'
