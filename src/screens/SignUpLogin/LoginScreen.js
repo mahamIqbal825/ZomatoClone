@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { Image, View, Text, Keyboard } from 'react-native';
-import { Container, Content } from '../../components';
-import TextInputContent from '../../components/TextInputContent';
-import CommonBtn from '../../components/CommonBtn';
-import { Images } from '../../theme';
-import { setToken } from '../../utils/StorageService'
-import { useDispatch } from 'react-redux';
-import { setTokenAction } from '../../redux/actions/UserAction';
-import styles from './Styles';
-import { API_SERVICE } from '../../utils/API'
-
+import React, { useState, useEffect } from "react";
+import { Image, View, Text, Keyboard, Alert } from "react-native";
+import { Container, Content } from "../../components";
+import TextInputContent from "../../components/TextInputContent";
+import CommonBtn from "../../components/CommonBtn";
+import { Images } from "../../theme";
+import { setToken } from "../../utils/StorageService";
+import { useDispatch } from "react-redux";
+import { setTokenAction } from "../../redux/actions/UserAction";
+import styles from "./Styles";
+import { API_SERVICE } from "../../utils/API";
 
 function LoginScreen({ navigation }) {
-
-  const [ mobile, setMobile ]= useState('')
-  const [ password, setPassword ]= useState('')
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const onPress = async () => {
-      Keyboard.dismiss();
+    Keyboard.dismiss();
 
-      if(mobile === ''){
-        Alert.alert('Please enter mobile number')
-        return 
-      }
-      if(password === ''){
-        Alert.alert('Please enter your password')
-        return 
-      }
-      const payload = {mobile, password}
+    if (mobile === "") {
+      Alert.alert("Please enter mobile number");
+      return;
+    }
+    if (password === "") {
+      Alert.alert("Please enter your password");
+      return;
+    }
+    const payload = { mobile, password };
     console.log(payload);
-      try{
-          const result = await API_SERVICE('customer/login', payload, 'POST')
-          const { status, data } = result
-          if( status === 1){
-            dispatch(setTokenAction(data))
-            await setToken(data)
-            navigation.navigate('Home')
-          }
-        }catch(e){
-          console.log(e);
-        }
-   }
+    try {
+      const result = await API_SERVICE("customer/login", payload, "POST");
+      const { status, data } = result;
+      if (status === 1) {
+        dispatch(setTokenAction(data));
+        await setToken(data);
+        navigation.navigate("Home");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -57,7 +55,7 @@ function LoginScreen({ navigation }) {
             <View style={styles.inputContent}>
               <TextInputContent
                 value={mobile}
-                onChangeText={(t)=> setMobile(t)}
+                onChangeText={(t) => setMobile(t)}
                 normalInput
                 placeholder="Mobile"
                 type="phone-pad"
@@ -65,7 +63,7 @@ function LoginScreen({ navigation }) {
               />
               <TextInputContent
                 value={password}
-                onChangeText={(t)=> setPassword(t)}
+                onChangeText={(t) => setPassword(t)}
                 passwordInput
                 placeholder="Password"
                 type="default"
@@ -75,7 +73,8 @@ function LoginScreen({ navigation }) {
             </View>
             <Text
               style={[styles.greenText, styles.forgotPasswordText]}
-              onPress={() => navigation.navigate('ForgotPassword')}>
+              onPress={() => navigation.navigate("ForgotPassword")}
+            >
               Forgot Password?
             </Text>
             <CommonBtn
@@ -97,10 +96,11 @@ function LoginScreen({ navigation }) {
               commonBtnTextStyle={styles.loginGoogleTextBtn}
             /> */}
             <Text style={styles.signUpLoginBottomText}>
-              New to Logistics?{' '}
+              New to Logistics?{" "}
               <Text
                 style={styles.greenText}
-                onPress={() => navigation.navigate('SignUp')}>
+                onPress={() => navigation.navigate("SignUp")}
+              >
                 Register
               </Text>
             </Text>

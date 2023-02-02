@@ -1,11 +1,10 @@
-import * as React from 'react';
-import { Image, View, Text } from 'react-native';
-import { Container, Content } from '../../components';
-import CommonBtn from '../../components/CommonBtn';
-import TextInputContent from '../../components/TextInputContent';
-import { Images } from '../../theme';
-
-import styles from './Styles';
+import * as React from "react";
+import { Image, View, Text } from "react-native";
+import { Container, Content } from "../../components";
+import CommonBtn from "../../components/CommonBtn";
+import TextInputContent from "../../components/TextInputContent";
+import { Images } from "../../theme";
+import styles from "./Styles";
 
 function ForgotPasswordScreen({ navigation }) {
   return (
@@ -19,12 +18,12 @@ function ForgotPasswordScreen({ navigation }) {
           />
           <View style={styles.inputContainer}>
             <Text style={styles.heading}>
-              Forgot{'\n'}
+              Forgot{"\n"}
               Password?
             </Text>
             <View style={styles.inputContent}>
               <Text style={styles.otpPeragraph}>
-                An 4 digit code has been sent to{'\n'}+1 (783) 0986 8786
+                An 4 digit code has been sent to{"\n"}+1 (783) 0986 8786
               </Text>
               <TextInputContent
                 normalInput
@@ -36,7 +35,7 @@ function ForgotPasswordScreen({ navigation }) {
             <CommonBtn
               normalBtn
               btnText="Submit"
-              onPress={() => navigation.navigate('ForgotOtp')}
+              onPress={() => navigation.navigate("ForgotOtp")}
             />
           </View>
         </Content>

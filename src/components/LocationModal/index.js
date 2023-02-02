@@ -1,18 +1,17 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { View, Text, Image, Modal, TouchableOpacity } from 'react-native';
-import { Images } from '../../theme';
-import { BlurView } from '@react-native-community/blur';
-import LinearGradient from 'react-native-linear-gradient';
-import styles from './Styles/index';
-import { useIsDrawerOpen } from '@react-navigation/drawer';
-import { useDispatch, useSelector } from 'react-redux';
-import { showLocationModal } from '../../redux/actions';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { View, Text, Image, Modal, TouchableOpacity } from "react-native";
+import { Images } from "../../theme";
+import { BlurView } from "@react-native-community/blur";
+import LinearGradient from "react-native-linear-gradient";
+import styles from "./Styles/index";
+import { useIsDrawerOpen } from "@react-navigation/drawer";
+import { useDispatch, useSelector } from "react-redux";
+import { showLocationModal } from "../../redux/actions";
 
 function LocationModal() {
-  const [modalSearchLocationVisible, setModalSearchLocationVisible] = useState(
-    false
-  );
+  const [modalSearchLocationVisible, setModalSearchLocationVisible] =
+    useState(false);
   const isDrawerOpen = useIsDrawerOpen();
   const { showLocation, openCount } = useSelector((state) => state.app);
   const dispatch = useDispatch();
@@ -29,7 +28,8 @@ function LocationModal() {
       <Modal
         transparent
         animationType="fade"
-        visible={showLocation && !isDrawerOpen && openCount === 1}>
+        visible={showLocation && !isDrawerOpen && openCount === 1}
+      >
         <View style={styles.modalCenteredView}>
           <BlurView
             style={styles.absolute}
@@ -43,7 +43,7 @@ function LocationModal() {
               style={styles.modalBgImgStyle}
             />
             <LinearGradient
-              colors={['#fdf5db1a', '#FDF5DB']}
+              colors={["#fdf5db1a", "#FDF5DB"]}
               start={{ x: 1, y: 0.95 }}
               end={{ x: 1, y: 0 }}
               style={styles.bgGradiant}
@@ -56,7 +56,7 @@ function LocationModal() {
               />
             </View>
             <Text style={styles.modalHeading}>
-              Device location is{'\n'}not enabled
+              Device location is{"\n"}not enabled
             </Text>
             <Text style={styles.modalParegraph}>
               Please enabled device location to ensure accurate address and
@@ -66,7 +66,8 @@ function LocationModal() {
               style={styles.modalBtn}
               onPress={() => {
                 dispatch(showLocationModal(false));
-              }}>
+              }}
+            >
               <Image
                 source={Images.LocationMarkWhite}
                 resizeMode="cover"
@@ -84,17 +85,16 @@ function LocationModal() {
               onPress={() => {
                 setModalSearchLocationVisible(true);
                 dispatch(showLocationModal(false));
-              }}>
+              }}
+            >
               <Image
                 source={Images.GreenSearchIcon}
                 resizeMode="cover"
                 style={styles.modalBtnIcon}
               />
               <Text
-                style={[
-                  styles.modalBtnText,
-                  styles.modalSearchLocationBtnText
-                ]}>
+                style={[styles.modalBtnText, styles.modalSearchLocationBtnText]}
+              >
                 Enter location manually
               </Text>
             </TouchableOpacity>
@@ -104,7 +104,8 @@ function LocationModal() {
       <Modal
         transparent
         animationType="fade"
-        visible={modalSearchLocationVisible}>
+        visible={modalSearchLocationVisible}
+      >
         <View style={styles.modalCenteredView}>
           <BlurView
             style={styles.absolute}
@@ -118,7 +119,7 @@ function LocationModal() {
               style={styles.modalBgImgStyle}
             />
             <LinearGradient
-              colors={['#fdf5db1a', '#FDF5DB']}
+              colors={["#fdf5db1a", "#FDF5DB"]}
               start={{ x: 1, y: 0.95 }}
               end={{ x: 1, y: 0 }}
               style={styles.bgGradiant}
@@ -128,7 +129,8 @@ function LocationModal() {
             </Text>
             <TouchableOpacity
               style={styles.modalCloseBtn}
-              onPress={() => setModalSearchLocationVisible(false)}>
+              onPress={() => setModalSearchLocationVisible(false)}
+            >
               <Image
                 source={Images.GreenCloseIcon}
                 resizeMode="cover"
@@ -136,22 +138,22 @@ function LocationModal() {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.modalBtn, styles.modalSearchLocationBtn]}>
+              style={[styles.modalBtn, styles.modalSearchLocationBtn]}
+            >
               <Image
                 source={Images.GreenSearchIcon}
                 resizeMode="cover"
                 style={styles.modalBtnIcon}
               />
               <Text
-                style={[
-                  styles.modalBtnText,
-                  styles.modalSearchLocationBtnText
-                ]}>
+                style={[styles.modalBtnText, styles.modalSearchLocationBtnText]}
+              >
                 Search for your location
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.modalBtn, styles.searchLocationGreenBtn]}>
+              style={[styles.modalBtn, styles.searchLocationGreenBtn]}
+            >
               <Image
                 source={Images.LocationMarkWhite}
                 resizeMode="cover"
